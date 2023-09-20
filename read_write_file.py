@@ -32,6 +32,15 @@ def dishes_dict():
 def get_shop_list_by_dishes(dishes: list, person_count: int) -> dict:
     ingr_dict = {}
     cook_book = dishes_dict()
+
+    for elem in dishes:
+        if elem in cook_book.keys():
+            pass
+        else:
+            print('Sorry, at least one of your dishes is not in the recipie book')
+            print(f"Please make your choice out of available dishes: {', '.join(cook_book.keys())}")
+            return {}  # check the dish availability in the given list
+
     for dish in dishes:
         for val in cook_book[dish]:
             values = [i for i in val.values()][0]
