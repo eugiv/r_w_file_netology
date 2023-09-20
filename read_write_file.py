@@ -1,5 +1,10 @@
+def pretty_print(dictionary: dict):
+    for key, value in dictionary.items():
+        print(key)
+        for val in value:
+            print(val)
 
-
+# task_1
 def dishes_dict():
     cook_book = {}
 
@@ -18,15 +23,26 @@ def dishes_dict():
 
                     cook_book[dish] += [ingr_dict]
 
-        for dish, ingr in cook_book.items():
-            print(f"{dish}")
-            for ingr in ingr:
-                print(ingr)
-            print()
+        # pretty_print(cook_book)  # uncomment to see a nice looking output
 
     return cook_book
 
-dishes_dict()
+
+# task_2
+def get_shop_list_by_dishes(dishes: list, person_count: int) -> dict:
+    ingr_dict = {}
+    cook_book = dishes_dict()
+    for dish in dishes:
+        for val in cook_book[dish]:
+            values = [i for i in val.values()][0]
+            del val['ingredient_name']
+            val['quantity'] = val['quantity'] * person_count
+            last_key = next(reversed(val))
+            val = {last_key: val.pop(last_key), **val}  # reversing dict key-pairs
+            ingr_dict.setdefault(values, []).append(val)  # setdefault method is used to add values for duplicated keys
+
+    pretty_print(ingr_dict)
+    return ingr_dict
 
 
-
+get_shop_list_by_dishes(['Омлет','Фахитос'], 34)
