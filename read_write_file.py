@@ -54,4 +54,25 @@ def get_shop_list_by_dishes(dishes: list, person_count: int) -> dict:
     return ingr_dict
 
 
-get_shop_list_by_dishes(['Омлет','Фахитос'], 34)
+# get_shop_list_by_dishes(['Омлет','Фахитос'], 34)
+
+# task_3
+def files_comp():
+    with open("1.txt", "r") as f1, open("2.txt", "r") as f2, open("3.txt", "r") as f3:
+        files_list = [f1, f2, f3]
+
+        files_list_sorted = []
+        for i in files_list:
+            elem_list = [j.strip() for j in i.readlines()]
+            elem_list_cnt = len(elem_list)
+            files_list_sorted.append([elem_list_cnt, i])
+
+        files_list_sorted = sorted(files_list_sorted, key=lambda x: x[0])
+
+        for elem in files_list_sorted:
+            del elem[0]
+        files_list_sorted = [i[0] for i in files_list_sorted]
+
+        print(files_list_sorted)
+
+files_comp()
