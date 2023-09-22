@@ -1,4 +1,6 @@
 import os
+
+
 def pretty_print(dictionary: dict):
     for key, value in dictionary.items():
         print(key)
@@ -60,7 +62,7 @@ def get_shop_list_by_dishes(dishes: list, person_count: int) -> dict:
     return ingr_dict
 
 
-get_shop_list_by_dishes(['Омлет','Фахитос'], 34)
+get_shop_list_by_dishes(['Омлет', 'Фахитос'], 34)
 
 
 # task_3
