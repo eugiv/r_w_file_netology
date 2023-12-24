@@ -1,6 +1,13 @@
 import os
 
+import sys
+res = sys.path.append('/Users/eugene_ivanov/Netology_homeworks/netology_decorators/')
+import logger_1
 
+logger = logger_1.logger
+
+
+@logger
 def pretty_print(dictionary: dict):
     for key, value in dictionary.items():
         print(key)
@@ -9,6 +16,7 @@ def pretty_print(dictionary: dict):
 
 
 # task_1
+@logger
 def dishes_dict() -> dict:
     cook_book = {}
     file = "recipes.txt"
@@ -37,6 +45,7 @@ def dishes_dict() -> dict:
 
 
 # task_2
+@logger
 def get_shop_list_by_dishes(dishes: list, person_count: int) -> dict:
     ingr_dict = {}
     cook_book = dishes_dict()
@@ -66,6 +75,7 @@ get_shop_list_by_dishes(['Омлет', 'Фахитос'], 34)
 
 
 # task_3
+@logger
 def files_comp():
     files_all = ["1.txt", "2.txt", "3.txt"]
     if all(os.path.isfile(file) for file in files_all):
